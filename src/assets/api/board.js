@@ -1,20 +1,20 @@
 import axios from 'axios';
 
-const BASE_URL = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst";
+let keyId = '11b9987ef570445ca30d';
+let serviceId = 'COOKRCP01';
+let dataType = 'json';
+let startIdx = 1;
+let endIdx = 10;
 
-var queryParams = '?' + encodeURIComponent('serviceKey') + '='+'FJKlMr8vIXHMp/Qxkj548ivu3ao406ZHfCdEGiOzK1BOme/H8MwQBqhh8BR1dhlsqIwgn6G5wpQ2pzadx3zUow=='; /*Service Key*/
-queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
-queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('1000'); /**/
-queryParams += '&' + encodeURIComponent('dataType') + '=' + encodeURIComponent('XML'); /**/
-queryParams += '&' + encodeURIComponent('base_date') + '=' + encodeURIComponent('20210628'); /**/
-queryParams += '&' + encodeURIComponent('base_time') + '=' + encodeURIComponent('0600'); /**/
-queryParams += '&' + encodeURIComponent('nx') + '=' + encodeURIComponent('55'); /**/
-queryParams += '&' + encodeURIComponent('ny') + '=' + encodeURIComponent('127'); /**/
+const BASE_URL = `http://openapi.foodsafetykorea.go.kr/api/${keyId}/${serviceId}/${dataType}/${startIdx}/${endIdx}`;
+
+// let queryParams = '?' + encodeURIComponent('serviceKey') + '='+'11b9987ef570445ca30d';
+// queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1');
+// queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('1000');
+// queryParams += '&' + encodeURIComponent('type') + '=' + encodeURIComponent('JSON');
 
 export default {
-    getAricles: function(page){
-        console.log(page)
-        console.log(BASE_URL + queryParams)
-        return axios.get(BASE_URL + queryParams);
+    getAricles: function(){
+        return axios.get(BASE_URL);
     }
 }
